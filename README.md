@@ -1,0 +1,2 @@
+# HinataFilosoft
+Philosofy teacher
