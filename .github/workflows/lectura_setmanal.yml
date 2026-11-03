@@ -1,1 +1,38 @@
+name: Enviament Setmanal de Filosofia
 
+on:
+  schedule:
+    - cron: '0 8 * * 1'
+  workflow_dispatch:
+
+jobs:
+  run-agent:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descarregar repositori
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instal·lar dependències
+        run: |
+          pip install google-genai
+
+      - name: Executar Agent
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          EMAIL_EMISSOR: ${{ secrets.EMAIL_EMISSOR }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+          EMAIL_RECEPTOR: ${{ secrets.EMAIL_RECEPTOR }}
+        run: python agent_filosofia.py
+
+      - name: Guardar canvis d'estat
+        run: |
+          git config --global user.name 'Agent Filosofia'
+          git config --global user.email 'agent@bot.com'
+          git add estat_estudiant.json
+          git commit -m "Actualització d'estat setmanal" || exit 0
+          git push
