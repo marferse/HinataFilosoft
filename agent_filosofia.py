@@ -24,7 +24,7 @@ def desar_estat(estat):
         json.dump(estat, f, ensure_ascii=False, indent=2)
 def generar_lliço(tema_actual, nivell):
     # Sustituye la URL de abajo por el enlace de tu Google Form
-    URL_FORMULARI = "https://docs.google.com/forms/d/1zfTh6i0hQEJHrjzLGy099LOYCtIFu0dbZBFjp-hj2H4/viewform"
+    URL_FORMULARI = "https://docs.google.com/forms/d/e/1FAIpQLSdZv0j1o5r7zXoX7ecSr18iGljdm81EANtAdgpfaTY7TJrmOA/viewform?usp=dialog"
 
     prompt = f"""
     Actua com un professor universitari de filosofia divulgativa.
