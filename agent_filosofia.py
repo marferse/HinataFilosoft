@@ -22,8 +22,10 @@ def carregar_estat():
 def desar_estat(estat):
     with open(FITXER_ESTAT, "w", encoding="utf-8") as f:
         json.dump(estat, f, ensure_ascii=False, indent=2)
-
 def generar_lliço(tema_actual, nivell):
+    # Sustituye la URL de abajo por el enlace de tu Google Form
+    URL_FORMULARI = "https://docs.google.com/forms/d/1zfTh6i0hQEJHrjzLGy099LOYCtIFu0dbZBFjp-hj2H4/viewform"
+
     prompt = f"""
     Actua com un professor universitari de filosofia divulgativa.
     Genera la lliçó setmanal per al tema: "{tema_actual}".
@@ -34,6 +36,7 @@ def generar_lliço(tema_actual, nivell):
     1. Títol clar de la lliçó i introducció teòrica intuïtiva (300-400 paraules).
     2. 2 Recomanacions de lectura/articles d'accés lliure (Stanford Encyclopedia of Philosophy, Internet Encyclopedia of Philosophy, etc.).
     3. 3 Preguntes de reflexió al final per avaluar la comprensió.
+    4. Al final de tot, un botó o enllaç ben visible que digui "Respondre el qüestionari d'avaluació" dirigit a aquest URL: {URL_FORMULARI}
     """
     
     response = client.models.generate_content(
@@ -44,6 +47,7 @@ def generar_lliço(tema_actual, nivell):
         )
     )
     return response.text
+
 
 def enviar_email(assumpte, cos_html):
     msg = MIMEMultipart("alternative")
