@@ -34,7 +34,7 @@ def generar_lliço(tema_actual, nivell):
     Escriu la resposta directament en format HTML (sense etiquetes ```html inici/final) ben estructurat amb CSS integrat per a correu electrònic.
     Inclou:
     1. Títol clar de la lliçó i introducció teòrica intuïtiva (300-400 paraules).
-    2. 2 Recomanacions de lectura/articles d'accés lliure (Stanford Encyclopedia of Philosophy, Internet Encyclopedia of Philosophy, etc.).
+    2. 2 Recomanacions de lectura/articles d'accés lliure (Stanford Encyclopedia of Philosophy, Internet Encyclopedia of Philosophy, youtube,etc.).
     3. 3 Preguntes de reflexió al final per avaluar la comprensió.
     4. Al final de tot, un botó o enllaç ben visible que digui "Respondre el qüestionari d'avaluació" dirigit a aquest URL: {URL_FORMULARI}
     """
@@ -79,7 +79,7 @@ def main():
 
     # Actualitzem l'índex per a la setmana següent
     estat["historial"].append(tema_actual)
-    estat["index_actual"] = idx + 1
+    #estat["index_actual"] = idx + 1
     desar_estat(estat)
     print("Correu enviat i estat actualitzat correctament!")
 
