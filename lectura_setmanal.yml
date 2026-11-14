@@ -2,7 +2,7 @@ name: Enviament Setmanal de Filosofia
 
 on:
   schedule:
-    - cron: '0 8 * * 1'
+    - cron: '0 8 * * SAT'
   workflow_dispatch:
 
 jobs:
